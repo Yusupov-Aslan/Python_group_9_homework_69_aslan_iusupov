@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label>Number A:
+    <input id="numA" type="text" name="A">
+</label>
+<br>
+<br>
+<label>Number B:
+    <input id="numB" type="text" name="B">
+</label>
+<br>
+<br>
+<button onclick="calculate(this)" data-action="add">ADD</button>
+<button onclick="calculate(this)" data-action="subtract">SUBTRACT</button>
+<button onclick="calculate(this)" data-action="multiply">MULTIPLY</button>
+<button onclick="calculate(this)" data-action="divide">DIVIDE</button>
+<hr>
+<div id="result"></div>
+
+<script>
+    var csrftoken = '{{ csrf_token }}';
+</script>
+<script src="{% static 'js/index.js' %}"></script>
+
+</body>
+</html>

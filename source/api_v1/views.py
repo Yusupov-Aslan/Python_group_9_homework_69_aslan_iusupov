@@ -22,3 +22,15 @@ def add(request, *args, **kwargs):
             return HttpResponseBadRequest("Данные не являются числами!")
         response = {'answer': nums['A'] + nums['B']}
         return JsonResponse(response)
+
+
+@csrf_exempt
+def subtract(request, *args, **kwargs):
+    if request.method != "POST":
+        return HttpResponseNotAllowed(permitted_methods=["POST"])
+    if request.body:
+        nums = json.loads(request.body)
+        if not validate_nums(nums):
+            return HttpResponseBadRequest("Данные не являются числами!")
+        response = {'answer': nums['A'] - nums['B']}
+        return JsonResponse(response)

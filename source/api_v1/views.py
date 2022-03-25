@@ -17,7 +17,8 @@ def add(request, *args, **kwargs):
     if request.body:
         nums = json.loads(request.body)
         if not validate_nums(nums):
-            return HttpResponseBadRequest("Данные не являются числами!")
+            response = {"error": "Данные не являются числами!"}
+            return HttpResponseBadRequest(json.dumps(response))
         response = {'answer': nums['A'] + nums['B']}
         return JsonResponse(response)
 
@@ -28,7 +29,8 @@ def subtract(request, *args, **kwargs):
     if request.body:
         nums = json.loads(request.body)
         if not validate_nums(nums):
-            return HttpResponseBadRequest("Данные не являются числами!")
+            response = {"error": "Данные не являются числами!"}
+            return HttpResponseBadRequest(json.dumps(response))
         response = {'answer': nums['A'] - nums['B']}
         return JsonResponse(response)
 
@@ -39,7 +41,8 @@ def multiply(request, *args, **kwargs):
     if request.body:
         nums = json.loads(request.body)
         if not validate_nums(nums):
-            return HttpResponseBadRequest("Данные не являются числами!")
+            response = {"error": "Данные не являются числами!"}
+            return HttpResponseBadRequest(json.dumps(response))
         response = {'answer': nums['A'] * nums['B']}
         return JsonResponse(response)
 
